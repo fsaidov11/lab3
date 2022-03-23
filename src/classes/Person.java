@@ -50,7 +50,7 @@ public class Person extends Human {
     public void noticeFlower(Flower flower) {
         if (flower.getHigh() < Flower.STANDARD_FLOWER_HIGH_CM) {
             System.out.println(getName() + " are " + Feelings.AMAZED + " that both grass and flowers were " + Feelings.SURPRISINGLY + " tiny and undersized ");
-            System.out.println(" In order to see the flowers, one have to to squat down.");
+            System.out.println(" In order to see the flowers, one have to squat down.");
         }
     }
 
