@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         SpaceSuit spaceSuit = new SpaceSuit(Color.WHITE, 7, 0);
         Flower flower = new Flower(Color.RED, 10);
-        Person cosmonauts = new Person("Cosmonauts", null);
+        Person cosmonauts = new Person("Cosmonauts", spaceSuit);
         Grass grass = new Grass(Color.GREEN, 2);
         cosmonauts.joinStory();
         new Landing("successful");
@@ -20,6 +20,7 @@ public class Main {
         cosmonauts.shout(3);
         cosmonauts.setName("Travelers");
         cosmonauts.stepOn(grass);
+        spaceSuit.openSuit();
         cosmonauts.breath();
         flower.doSmell();
         flower.grow(50);

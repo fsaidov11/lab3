@@ -1,5 +1,6 @@
 package classes;
 
+import com.sun.istack.internal.Nullable;
 import plants.Grass;
 import plants.Flower;
 import utils.Feelings;
@@ -16,9 +17,7 @@ public class Person extends Human {
 
 
     public Person(String name, Clothes clothes) {
-        super(name);
-        this.name = name;
-        this.clothes = clothes;
+        super(name, clothes);
     }
 
     @Override
@@ -33,7 +32,7 @@ public class Person extends Human {
         System.out.println(location);
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(@Nullable Location location) {
         this.location = location;
     }
 
@@ -82,14 +81,14 @@ public class Person extends Human {
                 }
             }
         }
-        System.out.print("breathing fresh air.");
+        System.out.println("Breathing fresh air.");
     }
 
-    public void stepOn(Grass grass) {
+    public void stepOn(@Nullable Grass grass) {
         System.out.println(name + " stepping on " + grass.getColor() + " grass, ");
     }
 
-    public void setName(String name) {
+    public void setName(@Nullable String name) {
         this.name = name;
     }
 

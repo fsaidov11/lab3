@@ -4,9 +4,11 @@ package classes;
 import plants.Flower;
 
 public abstract class Human {
-    String name;
+    private String name;
+    private Clothes clothes;
 
-    public Human(String name) {
+    public Human(String name, Clothes clothes) {
+        this.clothes = clothes;
         this.name = name;
     }
 

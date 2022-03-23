@@ -6,7 +6,6 @@ import utils.GetColor;
 
 public abstract class Plant implements DoSmell, GetColor {
     protected int high;
-    protected int age;
     protected Color color;
 
     @Override

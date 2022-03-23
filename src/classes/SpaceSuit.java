@@ -39,15 +39,17 @@ public class SpaceSuit extends Clothes implements OxygenProvider {
 
     public void openSuit() {
         isSuitOpened = true;
-        System.out.println(" With space suit. ");
+        System.out.println("Opening space suit.");
+        System.out.println("It is so " + Feelings.NICE + " to be " + Location.Out + " without space suit. ");
     }
 
     public void closeSuit() {
         isSuitOpened = false;
-        System.out.println("It is so " + Feelings.NICE + " to be " + Location.Out + " without space suit. ");
+        System.out.println("Closing spacesuit.");
     }
 
     public boolean isSuitOpened() {
         return isSuitOpened;
     }
+
 }
