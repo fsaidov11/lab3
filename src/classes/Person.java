@@ -62,7 +62,8 @@ public class Person extends Human {
 
     public void breath() {
         if (clothes != null) {
-            if (clothes instanceof SpaceSuit spaceSuit) {
+            if (clothes instanceof SpaceSuit) {
+                SpaceSuit spaceSuit = (SpaceSuit) clothes;
                 if (!spaceSuit.isSuitOpened()) {
                     if (spaceSuit.hasOxygen()) {
                         int receivedOxygen = spaceSuit.getOxygen(OXYGEN_NORMAL_AMOUNT);

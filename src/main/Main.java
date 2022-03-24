@@ -26,8 +26,5 @@ public class Main {
         flower.grow(50);
         cosmonauts.noticeFlower(flower);
         cosmonauts.laugh();
-        System.out.println(cosmonauts);
-        System.out.println(flower);
-        System.out.println(grass);
     }
 }
