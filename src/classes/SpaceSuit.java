@@ -5,6 +5,8 @@ import utils.Location;
 import utils.OxygenProvider;
 import utils.Color;
 
+import java.util.Objects;
+
 public class SpaceSuit extends Clothes implements OxygenProvider {
     protected Color color;
     protected int size;
@@ -52,4 +54,27 @@ public class SpaceSuit extends Clothes implements OxygenProvider {
         return isSuitOpened;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SpaceSuit spaceSuit = (SpaceSuit) o;
+        return size == spaceSuit.size && color == spaceSuit.color;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(color) * 37 +
+                Objects.hash(size) * 37;
+    }
+
+    @Override
+    public String toString() {
+        return "SpaceSuit{" +
+                "color=" + color +
+                ", size=" + size +
+                ", oxygenSize=" + oxygenSize +
+                ", isSuitOpened=" + isSuitOpened +
+                '}';
+    }
 }

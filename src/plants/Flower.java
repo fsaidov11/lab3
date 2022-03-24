@@ -4,6 +4,8 @@ import plants.Plant;
 import utils.Color;
 import utils.Feelings;
 
+import java.util.Objects;
+
 public class Flower extends Plant {
 
     public static final int STANDARD_FLOWER_HIGH_CM = 50;
@@ -32,5 +34,28 @@ public class Flower extends Plant {
         } else {
             System.out.println(" Flowers are waking up after winter. ");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Flower flower = (Flower) o;
+        return high == flower.high && color == flower.color;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(color) * 37 +
+                Objects.hash(high) * 37;
+    }
+
+    @Override
+    public String toString() {
+        return "Flower {" +
+                "color = " + color +
+                ", high = " + high +
+                '}';
     }
 }

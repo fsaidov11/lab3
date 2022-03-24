@@ -7,6 +7,7 @@ import utils.Feelings;
 import utils.Location;
 
 import java.util.Objects;
+import java.util.function.ObjLongConsumer;
 
 public class Person extends Human {
 
@@ -61,8 +62,7 @@ public class Person extends Human {
 
     public void breath() {
         if (clothes != null) {
-            if (clothes instanceof SpaceSuit) {
-                SpaceSuit spaceSuit = (SpaceSuit) clothes;
+            if (clothes instanceof SpaceSuit spaceSuit) {
                 if (!spaceSuit.isSuitOpened()) {
                     if (spaceSuit.hasOxygen()) {
                         int receivedOxygen = spaceSuit.getOxygen(OXYGEN_NORMAL_AMOUNT);
@@ -96,23 +96,26 @@ public class Person extends Human {
         return name;
     }
 
-    @Override
-    public String toString() {
-        return getClass().getName() +
-                "name = " + name;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(name, person.name);
+        return Objects.equals(name, person.name) && Objects.equals(clothes, person.clothes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name) * 37
+                + Objects.hash(location) * 37
+                + Objects.hash(clothes) * 37;
+    }
+
+    @Override
+    public String toString() {
+        return getClass() +
+                "name = " + name;
     }
 }
 

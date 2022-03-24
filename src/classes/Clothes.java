@@ -23,4 +23,12 @@ public abstract class Clothes implements GetColor {
     public void setSize(int size) {
         this.size = size;
     }
+
+    @Override
+    public String toString() {
+        return "Clothes{" +
+                "color=" + color +
+                ", size=" + size +
+                '}';
+    }
 }

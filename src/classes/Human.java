@@ -3,6 +3,8 @@ package classes;
 
 import plants.Flower;
 
+import java.util.Objects;
+
 public abstract class Human {
     private String name;
     private Clothes clothes;
