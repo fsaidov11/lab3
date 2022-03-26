@@ -4,12 +4,24 @@ import java.util.Objects;
 
 public class Landing {
 
-    private String result;
+    abstract class Lander {
+        abstract void land();
+    }
 
-    public Landing(String result)
-    {
+    private String result;
+    private Lander lander;
+
+    public Landing(String result) {
         this.result = result;
-        System.out.println("Landing was " + result);
+
+        lander = new Lander() {
+            @Override
+            void land() {
+                System.out.println("Landing was " + result);
+            }
+        };
+
+        lander.land();
     }
 
     @Override

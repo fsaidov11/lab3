@@ -1,5 +1,6 @@
 package classes;
 
+import exceptions.InputTypeException;
 import utils.GetColor;
 import utils.Color;
 
@@ -13,6 +14,9 @@ public abstract class Clothes implements GetColor {
     }
 
     public void setColor(Color color) {
+        if (color == null) {
+            throw new InputTypeException("Color", "Color null can't be set as clothes color");
+        }
         this.color = color;
     }
 

@@ -1,5 +1,6 @@
 package plants;
 
+import exceptions.InputTypeException;
 import utils.Color;
 import utils.Feelings;
 
@@ -27,7 +28,9 @@ public class Grass extends Plant {
 
     @Override
     public void grow(int days) {
-
+        if (days < 0) {
+            throw new InputTypeException("int", "number of days can't be negative");
+        }
     }
 
     @Override

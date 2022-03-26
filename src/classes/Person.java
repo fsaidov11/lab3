@@ -1,6 +1,8 @@
 package classes;
 
 import com.sun.istack.internal.Nullable;
+import exceptions.FirstClothesException;
+import exceptions.InputTypeException;
 import plants.Grass;
 import plants.Flower;
 import utils.Feelings;
@@ -11,14 +13,13 @@ import java.util.function.ObjLongConsumer;
 
 public class Person extends Human {
 
-    private String name;
     private Location location;
-    private Clothes clothes;
     private static final int OXYGEN_NORMAL_AMOUNT = 10;
 
 
-    public Person(String name, Clothes clothes) {
+    public Person(String name, Clothes clothes) throws FirstClothesException {
         super(name, clothes);
+        wearClothes(clothes);
     }
 
     @Override
@@ -33,13 +34,17 @@ public class Person extends Human {
         System.out.println(location);
     }
 
-    public void setLocation(@Nullable Location location) {
+    public void setLocation(Location location) {
+        if (location == null) {
+            throw new InputTypeException("Location", "The person location can't be set to null");
+        }
         this.location = location;
     }
 
     @Override
     public void comeOut() {
         System.out.println("The " + name + " left the " + Location.Cabin + " one by one and, ");
+
     }
 
     @Override
@@ -49,7 +54,9 @@ public class Person extends Human {
 
     @Override
     public void noticeFlower(Flower flower) {
-        if (flower.getHigh() < Flower.STANDARD_FLOWER_HIGH_CM) {
+        if (flower == null) {
+            throw new InputTypeException("Flower", "Person can't work with flower == null");
+        } else if (flower.getHigh() < Flower.STANDARD_FLOWER_HIGH_CM) {
             System.out.println(getName() + " are " + Feelings.AMAZED + " that both grass and flowers were " + Feelings.SURPRISINGLY + " tiny and undersized ");
             System.out.println(" In order to see the flowers, one have to squat down.");
         }
@@ -58,6 +65,30 @@ public class Person extends Human {
     @Override
     public void laugh() {
         System.out.println(" The situation made " + getName() + " laugh.");
+    }
+
+    public void unwearClothes() {
+        if (clothes == null) {
+            System.out.println("I don't have any clothes");
+        } else if (clothes instanceof SpaceSuit) {
+            SpaceSuit spaceSuit = (SpaceSuit) clothes;
+            System.out.println("Unwearing space suit by voice command");
+            spaceSuit.voiceCommand("open suit");
+        } else {
+            System.out.println("Unwearing simple clothes");
+        }
+        clothes = null;
+    }
+
+    public void wearClothes(Clothes clothes) {
+        if (clothes instanceof SpaceSuit) {
+            SpaceSuit spaceSuit = (SpaceSuit) clothes;
+            System.out.println("Wearing space suit by voice command");
+            spaceSuit.voiceCommand("close suit");
+        } else {
+            System.out.println("Wearing clothes");
+        }
+        this.clothes = clothes;
     }
 
     public void breath() {
@@ -73,11 +104,11 @@ public class Person extends Human {
                             return;
                         } else {
                             System.out.println("Oxygen was not enough.");
-                            spaceSuit.openSuit();
+                            spaceSuit.voiceCommand("open suit");
                         }
                     } else {
                         System.out.println("No oxygen left in spacesuit.");
-                        spaceSuit.openSuit();
+                        spaceSuit.voiceCommand("open suit");
                     }
                 }
             }

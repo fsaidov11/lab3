@@ -1,15 +1,20 @@
 package classes;
 
 
+import exceptions.FirstClothesException;
+import exceptions.InputTypeException;
 import plants.Flower;
 
 import java.util.Objects;
 
 public abstract class Human {
-    private String name;
-    private Clothes clothes;
+    protected String name;
+    protected Clothes clothes;
 
-    public Human(String name, Clothes clothes) {
+    public Human(String name, Clothes clothes) throws FirstClothesException {
+        if (clothes == null) {
+            throw new FirstClothesException("Human can't be nacked");
+        }
         this.clothes = clothes;
         this.name = name;
     }
@@ -34,6 +39,9 @@ public abstract class Human {
     }
 
     public void setName(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new InputTypeException("String", "name of Human can't be null or empty");
+        }
         this.name = name;
     }
 

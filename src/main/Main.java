@@ -3,6 +3,7 @@ package main;
 import classes.Landing;
 import classes.Person;
 import classes.SpaceSuit;
+import exceptions.FirstClothesException;
 import plants.Grass;
 import plants.Flower;
 import utils.Color;
@@ -12,7 +13,13 @@ public class Main {
     public static void main(String[] args) {
         SpaceSuit spaceSuit = new SpaceSuit(Color.WHITE, 7, 0);
         Flower flower = new Flower(Color.RED, 10);
-        Person cosmonauts = new Person("Cosmonauts", spaceSuit);
+        Person cosmonauts = null;
+        try {
+            cosmonauts = new Person("Cosmonauts", spaceSuit);
+        } catch (FirstClothesException e) {
+            e.printStackTrace();
+            return;
+        }
         Grass grass = new Grass(Color.GREEN, 2);
         cosmonauts.joinStory();
         new Landing("successful");
@@ -20,7 +27,10 @@ public class Main {
         cosmonauts.shout(3);
         cosmonauts.setName("Travelers");
         cosmonauts.stepOn(grass);
-        spaceSuit.openSuit();
+
+        cosmonauts.unwearClothes();
+//        spaceSuit.openSuit();
+
         cosmonauts.breath();
         flower.doSmell();
         flower.grow(50);
