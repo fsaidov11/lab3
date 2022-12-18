@@ -6,8 +6,7 @@ public class Landing {
 
     private String result;
 
-    public Landing(String result)
-    {
+    public Landing(String result) {
         this.result = result;
         System.out.println("Landing was " + result);
     }

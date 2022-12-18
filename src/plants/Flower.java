@@ -1,6 +1,5 @@
 package plants;
 
-import plants.Plant;
 import utils.Color;
 import utils.Feelings;
 

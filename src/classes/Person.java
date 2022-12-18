@@ -1,13 +1,11 @@
 package classes;
 
-import com.sun.istack.internal.Nullable;
 import plants.Grass;
 import plants.Flower;
 import utils.Feelings;
 import utils.Location;
 
 import java.util.Objects;
-import java.util.function.ObjLongConsumer;
 
 public class Person extends Human {
 
@@ -33,7 +31,7 @@ public class Person extends Human {
         System.out.println(location);
     }
 
-    public void setLocation(@Nullable Location location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -85,11 +83,11 @@ public class Person extends Human {
         System.out.println("Breathing fresh air.");
     }
 
-    public void stepOn(@Nullable Grass grass) {
+    public void stepOn(Grass grass) {
         System.out.println(name + " stepping on " + grass.getColor() + " grass, ");
     }
 
-    public void setName(@Nullable String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
